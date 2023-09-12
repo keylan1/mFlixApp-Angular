@@ -5,6 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login-form',
@@ -26,6 +27,7 @@ export class UserLoginFormComponent implements OnInit {
       localStorage.setItem('token', result.token);
       localStorage.setItem('Username', result.user.Username);
 
+      this.router.navigate(['movies']);
       this.dialogRef.close(); //Will close modal on success
       console.log(result);
       this.snackBar.open('Successfully logged in', 'OK', {
@@ -37,5 +39,6 @@ export class UserLoginFormComponent implements OnInit {
         duration: 2000
       });
     });
+
   }
 }
