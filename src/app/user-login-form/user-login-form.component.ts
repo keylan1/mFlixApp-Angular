@@ -5,35 +5,40 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-registration-form',
-  templateUrl: './user-registration-form.component.html',
-  styleUrls: ['./user-registration-form.component.scss']
+  selector: 'app-user-login-form',
+  templateUrl: './user-login-form.component.html',
+  styleUrls: ['./user-login-form.component.scss']
 })
-export class UserRegistrationFormComponent implements OnInit {
-  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
-
+export class UserLoginFormComponent implements OnInit {
+  @Input() userData = { Username: '', Password: '' };
   constructor(
     public fetchApiData: FetchApiDataService,
-    public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
+    public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar) { }
   ngOnInit(): void {
   }
   // This is the function responsible for sending the form inputs to the backend
-  registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
-      // Logic for a successful user registration goes here! (To be implemented)
+  userLogin(): void {
+    this.fetchApiData.userLogin(this.userData).subscribe((result) => {
+      localStorage.setItem('user', JSON.stringify(result.user));
+      localStorage.setItem('token', result.token);
+      localStorage.setItem('Username', result.user.Username);
+
+      this.router.navigate(['movies']);
       this.dialogRef.close(); //Will close modal on success
       console.log(result);
-      this.snackBar.open('Successfully registered', 'OK', {
+      this.snackBar.open('Successfully logged in', 'OK', {
         duration: 2000
       });
     }, (result) => {
       console.log(result);
-      this.snackBar.open(result, 'OK', {
+      this.snackBar.open('Sorry, something went wrong', 'OK', {
         duration: 2000
       });
     });
+
   }
 }
