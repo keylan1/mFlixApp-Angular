@@ -8,9 +8,35 @@
       {{ movie.Title }}
     </li>
   </ul>
-  <button mat-raised-button (click)="openEditUserProfileDialog()" style="margin-right: 10px; font-weight: bold"
-    color="primary">
-    Edit
-  </button>
-  <button mat-raised-button style="margin-right: 10px; font-weight: bold" color="primary">Delete Profile</button>
+
+  <form>
+    <h1>Edit Profile</h1>
+
+    <mat-form-field class="item-b">
+      <mat-label> Username </mat-label>
+      <input matInput [(ngModel)]="userData.Username" type="text" name="Username">
+    </mat-form-field>
+
+    <mat-form-field class="item-c">
+      <mat-label>Password</mat-label>
+      <input matInput [(ngModel)]="userData.Password" type="password" name="Password" required>
+    </mat-form-field>
+
+    <mat-form-field class="item-d">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="userData.Email" type="email" name="Email">
+    </mat-form-field>
+
+    <mat-form-field class="item-e">
+      <mat-label>Birthday</mat-label>
+      <input matInput [(ngModel)]="userData.Birthday" type="date" name="Birthday">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="editUserProfile()" style="margin-right: 10px; font-weight: bold" color="primary">
+      Edit
+    </button>
+    <button mat-raised-button style="margin-right: 10px; font-weight: bold" color="primary">Delete Profile</button>
+  </form>
+
+
 </div>

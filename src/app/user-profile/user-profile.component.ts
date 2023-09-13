@@ -22,7 +22,7 @@ export class UserProfileComponent {
 
   constructor(
     public fetchApiData: FetchApiDataService,
-    //public snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
     public dialog: MatDialog,
     private router: Router) { }
 
@@ -44,14 +44,20 @@ export class UserProfileComponent {
     });
   }
 
-  openEditUserProfileDialog(): void {
-    const dialogRef = this.dialog.open(EditUserComponent, {
-      width: '280px',
-      data: { userData: this.userData } // Pass user data to the EditUserComponent
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      // Handle any data returned from the dialog if needed
-      console.log('Dialog closed with result:', result);
+  editUserProfile(): void {
+    console.log(this.userData);
+    this.fetchApiData.editUser(this.userData).subscribe((result) => {
+      localStorage.setItem('user', JSON.stringify(result));
+      localStorage.setItem('Username', result.Username);
+      this.snackBar.open('Successfully edited', 'OK', {
+        duration: 2000
+      })
+      window.location.reload();
+    }, (result) => {
+      console.log(result);
+      this.snackBar.open('Error', 'OK', {
+        duration: 2000
+      });
     });
   }
 
