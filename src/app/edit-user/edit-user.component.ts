@@ -24,11 +24,6 @@ export class EditUserComponent {
     this.userData = data.userData; // Assign the userData passed from UserProfileComponent
   }
 
-  ngOnInit(): void {
-    // Access user data from the injected data
-    this.userData = this.data.userData;
-  }
-
   editUserProfile(): void {
     console.log(this.userData);
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
