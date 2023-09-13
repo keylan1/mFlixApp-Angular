@@ -1,0 +1,16 @@
+<div *ngIf="userData">
+  <h2>User Profile</h2>
+  <p>Username: {{ userData.Username }}</p>
+  <p>Email: {{ userData.Email }}</p>
+  <h3>Favorite Movies:</h3>
+  <ul>
+    <li *ngFor="let movie of favoriteMovies">
+      {{ movie.Title }}
+    </li>
+  </ul>
+  <button mat-raised-button (click)="openEditUserProfileDialog()" style="margin-right: 10px; font-weight: bold"
+    color="primary">
+    Edit
+  </button>
+  <button mat-raised-button style="margin-right: 10px; font-weight: bold" color="primary">Delete Profile</button>
+</div>

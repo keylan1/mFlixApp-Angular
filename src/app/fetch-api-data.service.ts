@@ -61,9 +61,11 @@ export class FetchApiDataService {
   }
 
   //get one user
-  getUser(username: string): Observable<any> {
+  // || {} is a fallback
+  getUser(): Observable<any> {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users/' + username, {
+    return this.http.get(apiUrl + 'users/' + user.Username, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -135,6 +137,7 @@ export class FetchApiDataService {
 
   //delete a movie from user's favorites
   deleteFavoriteMovie(username: string, movieId: string): Observable<any> {
+    //const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
     return this.http.delete(apiUrl + 'users/' + username + '/FavoriteMovies/' + movieId, {
       headers: new HttpHeaders(
@@ -149,8 +152,10 @@ export class FetchApiDataService {
 
   //edit user data 
   editUser(userInfo: any): Observable<any> {
-    const username = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const username = user.Username;
     const token = localStorage.getItem('token');
+    console.log(userInfo);
     return this.http.put(apiUrl + 'users/' + username, userInfo, {
       headers: new HttpHeaders(
         {
@@ -164,7 +169,8 @@ export class FetchApiDataService {
 
   //delete user profile 
   deleteUser(): Observable<any> {
-    const username = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const username = user.Username
     const token = localStorage.getItem('token');
     return this.http.delete(apiUrl + 'users/' + username, {
       headers: new HttpHeaders(
