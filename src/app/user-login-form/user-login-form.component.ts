@@ -36,7 +36,7 @@ export class UserLoginFormComponent implements OnInit {
       this.router.navigate(['movies']);
     }, (result) => {
       console.log(result);
-      this.snackBar.open('Sorry, something went wrong', 'OK', {
+      this.snackBar.open(`Sorry, user doesn't exist or you made a mistake`, 'OK', {
         duration: 2000
       });
     });

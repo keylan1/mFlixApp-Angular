@@ -4,7 +4,6 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { EditUserComponent } from '../edit-user/edit-user.component';
 import { MatDialog } from '@angular/material/dialog';
 
 
@@ -61,4 +60,21 @@ export class UserProfileComponent {
     });
   }
 
+  deleteUserProfile(): void {
+    if (confirm('are you sure?')) {
+      this.router.navigate(['welcome']).then(() => {
+        this.snackBar.open(
+          'You have successfully deleted your account',
+          'OK',
+          {
+            duration: 2000,
+          }
+        )
+      });
+      this.fetchApiData.deleteUser().subscribe(() => {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+      });
+    };
+  }
 }

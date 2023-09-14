@@ -19,7 +19,7 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 
 //set up for the routes
 const appRoutes: Routes = [
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     UserProfileComponent,
-    EditUserComponent
+    MovieInfoComponent,
   ],
   imports: [
     BrowserModule,

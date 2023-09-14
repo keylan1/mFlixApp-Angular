@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditUserComponent } from './edit-user.component';
+import { MovieInfoComponent } from './movie-info.component';
 
-describe('EditUserComponent', () => {
-  let component: EditUserComponent;
-  let fixture: ComponentFixture<EditUserComponent>;
+describe('MovieInfoComponent', () => {
+  let component: MovieInfoComponent;
+  let fixture: ComponentFixture<MovieInfoComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EditUserComponent]
+      declarations: [MovieInfoComponent]
     });
-    fixture = TestBed.createComponent(EditUserComponent);
+    fixture = TestBed.createComponent(MovieInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
