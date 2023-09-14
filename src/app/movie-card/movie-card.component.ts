@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MovieInfoComponent } from '../movie-info/movie-info.component';
+import { DirectorInfoComponent } from '../director-info/director-info.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -32,6 +33,16 @@ export class MovieCardComponent {
       data: {
         Title: title,
         Description: description,
+      },
+      width: '400px',
+    });
+  }
+
+  openDirectorDialog(director: any): void {
+    this.dialog.open(DirectorInfoComponent, {
+      data: {
+        Name: director.Name,
+        Bio: director.Bio,
       },
       width: '400px',
     });

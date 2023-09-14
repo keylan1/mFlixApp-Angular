@@ -9,7 +9,7 @@
       <button mat-button color="primary">
         Genre
       </button>
-      <button mat-button color="primary">
+      <button mat-button (click)="openDirectorDialog(movie.Director)" color="primary">
         Director
       </button>
       <button mat-button (click)="openSynopsisDialog(movie.Title, movie.Description)" color="primary">

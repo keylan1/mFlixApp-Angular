@@ -20,6 +20,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
+import { DirectorInfoComponent } from './director-info/director-info.component';
 
 //set up for the routes
 const appRoutes: Routes = [
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     UserProfileComponent,
     MovieInfoComponent,
+    DirectorInfoComponent,
   ],
   imports: [
     BrowserModule,
