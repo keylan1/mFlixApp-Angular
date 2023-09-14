@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { DirectorInfoComponent } from './director-info/director-info.component';
+import { GenreInfoComponent } from './genre-info/genre-info.component';
 
 //set up for the routes
 const appRoutes: Routes = [
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
     UserProfileComponent,
     MovieInfoComponent,
     DirectorInfoComponent,
+    GenreInfoComponent,
   ],
   imports: [
     BrowserModule,
