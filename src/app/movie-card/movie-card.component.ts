@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MovieInfoComponent } from '../movie-info/movie-info.component';
@@ -14,9 +14,9 @@ import { GenreInfoComponent } from '../genre-info/genre-info.component';
 
 //implement OnInit more convention and declaring to Angular that ngOnInit will occur. 
 export class MovieCardComponent {
-
+  user: any = {};
   movies: any[] = [];
-
+  favorites: any[] = [];
 
   constructor(public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -24,6 +24,7 @@ export class MovieCardComponent {
 
   ngOnInit(): void {
     this.getMovies();
+    this.getFavorites();
   }
 
   getMovies(): void {
@@ -33,6 +34,15 @@ export class MovieCardComponent {
       return this.movies;
     });
   }
+  // Fetch user info and set favorites
+  getFavorites(): void {
+    this.fetchApiData.getUser().subscribe((resp: any) => {
+      this.user = resp;
+      this.favorites = this.user.FavoriteMovies;
+      return this.favorites;
+    });
+  }
+
 
   openSynopsisDialog(title: string, description: string): void {
     this.dialog.open(MovieInfoComponent, {
@@ -64,140 +74,29 @@ export class MovieCardComponent {
     });
   }
 
-  /*getFavorites(): void {
-    this.fetchApiData.getUser().subscribe(
-      (res: any) => {
-        if (res.user && res.user.FavoriteMovies) {
-          this.favorites = res.user.FavoriteMovies;
-        } else {
-          this.favorites = []; // Set an empty array if data is not available
-        }
-      },
-      (error: any) => {
-        console.error('Error fetching user data:', error);
-        this.favorites = []; // Set an empty array on error as well
-      }
-    );
-  }*/
-
-
-  // Function to check if a movie is in favorites
-  isFavoriteMovie(movieId: string): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.FavoriteMovies && user.FavoriteMovies.includes(movieId);
+  // check if a movie is a user's favorite
+  isFavorite(id: string): boolean {
+    return !!(this.favorites.find(favMovie => favMovie._id === id));
   }
 
-
-  // Function to add/remove movie to/from favorites
-  toggleFavorite(movieId: string): void {
-
-    // Check if the movie is already a favorite
-    const isFavorite = this.isFavoriteMovie(movieId);
-
-    // Toggle the favorite status of the movie
-    if (isFavorite) {
-      /*
-      // Remove the movie from favorites locally
-      const user = JSON.parse(localStorage.getItem('user') || '{}');
-      user.FavoriteMovies = user.FavoriteMovies.filter((id: string) => id !== movie._id);
-      localStorage.setItem('user', JSON.stringify(user));
-*/
-      // Remove the movie from favorites on the backend server
-      this.fetchApiData.deleteFavoriteMovie(movieId).subscribe(
-        () => {
-          this.snackBar.open('Movie removed from favorites', 'OK', {
-            duration: 2000,
-          });
-          // Update the local movies array to reflect the change
-          const movie = this.movies.find((m) => m._id === movieId);
-          if (movie) {
-            movie.isFavorite = false;
-          }
-          /*
-          // Update the local movies array to reflect the change
-          movieId.isFavorite = false;*/
-        },
-        (error) => {
-          console.error('Error removing movie from favorites:', error);
-        }
-      );
-    } else {
-      /*
-      // Add the movie to favorites locally
-      const user = JSON.parse(localStorage.getItem('user') || '{}');
-      user.FavoriteMovies.push(movie);
-      localStorage.setItem('user', JSON.stringify(user));
-*/
-      // Add the movie to favorites on the backend server
-      this.fetchApiData.addFavoriteMovie(movieId).subscribe(
-        () => {
-          this.snackBar.open('Movie added to favorites', 'OK', {
-            duration: 2000,
-          });
-          // Update the local movies array to reflect the change
-          const movie = this.movies.find((m) => m._id === movieId);
-          if (movie) {
-            movie.isFavorite = true;
-          }
-          /*
-          // Update the local movies array to reflect the change
-          movieId.isFavorite = true;*/
-        },
-        (error) => {
-          console.error('Error adding movie to favorites:', error);
-        }
-      );
-    }
-
-
-    // Update the local 'isFavorite' property to reflect the change
-    //movie.isFavorite = !this.isFavoriteMovie(movie);
-  }
-
-
-  /*
-  isFavorite(movieId: string): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.FavoriteMovies.includes(movieId);
-  }
-
-  addFavorite(movieId: string): void {
-    console.log(this.favorites)
-    if (this.isFavorite(movieId)) {
-       this.removeFavorite(movieId);
-     }
-     else {
-    // Movie is not a favorite, so add it
-    this.fetchApiData.addFavoriteMovie(movieId).subscribe(() => {
-      this.snackBar.open('Movie added to favorites', 'OK', {
-        duration: 2000,
-      });
-      this.getFavorites();
-    });
-
-  }
-
-  removeFavorite(movieId: string): void {
-    this.fetchApiData.deleteFavoriteMovie(movieId).subscribe(() => {
-      this.snackBar.open('Movie removed from favorites', 'OK', {
-        duration: 2000,
-      });
-
-      const user = JSON.parse(localStorage.getItem('user') || '{}');
-      const username = user.Username;
-      if (username !== null) {
-        // Fetch the updated favorite movies data
-        this.fetchApiData.getFavoriteMovies(username).subscribe((favorites: any) => {
-          this.favorites = favorites;
+  toggleFavorite(id: string): void {
+    if (this.isFavorite(id)) {
+      // Remove the movie from favorites
+      this.fetchApiData.deleteFavoriteMovie(id).subscribe(() => {
+        this.snackBar.open('Movie removed from favorites', 'OK', {
+          duration: 2000,
         });
-      }
-    });
+        this.ngOnInit(); // You may want to update the UI after removal
+      });
+    } else {
+      // Add the movie to favorites
+      this.fetchApiData.addFavoriteMovie(id).subscribe(() => {
+        this.snackBar.open('Movie added to favorites', 'OK', {
+          duration: 2000,
+        });
+        this.ngOnInit(); // You may want to update the UI after addition
+      });
+    }
   }
 
-  toggleFavorite(movieId: string): void {
-    if (this.isFavorite(movieId)) {
-      this.removeFavorite(movieId);
-    } else {
-      this.addFavorite(movieId);
-    }*/
 }
