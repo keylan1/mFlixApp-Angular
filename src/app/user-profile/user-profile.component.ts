@@ -36,10 +36,8 @@ export class UserProfileComponent {
       this.userData.Username = this.user.Username;
       this.userData.Email = this.user.Email;
       this.userData.Birthday = this.user.Birthday;
-
-      this.fetchApiData.getFavoriteMovies(this.userData.Username).subscribe((res) => {
-        this.favoriteMovies = res;
-      })
+      this.favoriteMovies = this.user.FavoriteMovies;
+      return this.user;
     });
   }
 
