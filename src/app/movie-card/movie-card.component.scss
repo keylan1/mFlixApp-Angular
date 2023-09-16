@@ -2,3 +2,16 @@
   height: 100%;
   width: 100%;
 }
+
+.card-container {
+  //width: 100%; /* Adjust the width as needed */
+  overflow-x: auto;
+}
+
+.movie-page {
+  background-color: rgba(214, 182, 173, 0.2);
+}
+
+footer .card-style {
+  background-color: rgba(218, 217, 226, 0.4);
+}

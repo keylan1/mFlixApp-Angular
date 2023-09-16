@@ -50,7 +50,7 @@ export class MovieCardComponent {
         Title: title,
         Description: description,
       },
-      width: '400px',
+      width: '300px',
     });
   }
 
@@ -60,7 +60,7 @@ export class MovieCardComponent {
         Name: director.Name,
         Bio: director.Bio,
       },
-      width: '400px',
+      width: '300px',
     });
   }
 
@@ -70,7 +70,7 @@ export class MovieCardComponent {
         Name: genre.Name,
         Description: genre.Description,
       },
-      width: '400px',
+      width: '300px',
     });
   }
 

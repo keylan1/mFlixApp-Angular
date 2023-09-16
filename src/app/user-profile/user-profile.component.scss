@@ -1,0 +1,34 @@
+.form-group {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 400px;
+  margin: auto;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  grid-template-rows: auto auto; /* Two rows for profile info and edit profile */
+  grid-gap: 20px; /* Spacing between columns */
+}
+
+.profile-info {
+  grid-column: 1 / 2; /* Place in the first column */
+  grid-row: 1 / 2; /* Place in the first row */
+}
+
+.profile-edit {
+  grid-column: 1 / 2; /* Place in the first column */
+  grid-row: 2 / 3; /* Place in the second row */
+}
+
+.favorite-movies {
+  background-image: url("../../assets/welcomepage.jpg");
+
+  grid-column: 2 / 3; /* Place in the second column */
+  grid-row: 1 / 3; /* Span two rows */
+}
+
+ul {
+  list-style: none;
+}
