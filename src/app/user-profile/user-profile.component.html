@@ -1,15 +1,13 @@
 <app-nav-bar></app-nav-bar>
+<div class="background-image"></div>
 <div *ngIf="userData" class="profile-grid">
+
   <div class="profile-info">
-    <h3>User Profile</h3>
-    <p>Username: {{ userData.Username }}</p>
-    <p>Email: {{ userData.Email }}</p>
+    <p><strong>Username:</strong> {{ userData.Username }}</p>
+    <p><strong>Email:</strong> {{ userData.Email }}</p>
   </div>
 
-
-
   <div class="profile-edit">
-    <h3>Edit Profile</h3>
     <div class="form-group">
 
       <form>
@@ -33,10 +31,13 @@
           <input matInput [(ngModel)]="userData.Birthday" type="date" name="Birthday">
         </mat-form-field>
         <br>
-        <button mat-raised-button (click)="editUserProfile()" style="margin-right: 10px; font-weight: bold"
-          color="primary">
+        <button mat-raised-button (click)="editUserProfile()"
+          style="margin-right: 6px; font-weight: bold; background-color: #7e6494;" color="primary">
           Edit
         </button>
+        <button mat-raised-button (click)="deleteUserProfile()" style="font-weight: bold; background-color: #7e6494;"
+          color="primary">Delete
+          Profile</button>
       </form>
     </div>
   </div>
@@ -49,8 +50,5 @@
       </li>
     </ul>
   </div>
-  <div class="delete-profile">
-    <button mat-raised-button (click)="deleteUserProfile()" style="margin-right: 10px; font-weight: bold"
-      color="primary">Delete Profile</button>
-  </div>
+
 </div>

@@ -24,6 +24,7 @@ import { DirectorInfoComponent } from './director-info/director-info.component';
 import { GenreInfoComponent } from './genre-info/genre-info.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 //set up for the routes
 const appRoutes: Routes = [
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
