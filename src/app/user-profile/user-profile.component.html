@@ -1,0 +1,54 @@
+<app-nav-bar></app-nav-bar>
+<div class="background-image"></div>
+<div *ngIf="userData" class="profile-grid">
+
+  <div class="profile-info">
+    <p><strong>Username:</strong> {{ userData.Username }}</p>
+    <p><strong>Email:</strong> {{ userData.Email }}</p>
+  </div>
+
+  <div class="profile-edit">
+    <div class="form-group">
+
+      <form>
+        <mat-form-field class="item-b">
+          <mat-label> Username </mat-label>
+          <input matInput [(ngModel)]="userData.Username" type="text" name="Username">
+        </mat-form-field>
+
+        <mat-form-field class="item-c">
+          <mat-label>Password</mat-label>
+          <input matInput [(ngModel)]="userData.Password" type="password" name="Password" required>
+        </mat-form-field>
+
+        <mat-form-field class="item-d">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="userData.Email" type="email" name="Email">
+        </mat-form-field>
+
+        <mat-form-field class="item-e">
+          <mat-label>Birthday</mat-label>
+          <input matInput [(ngModel)]="userData.Birthday" type="date" name="Birthday">
+        </mat-form-field>
+        <br>
+        <button mat-raised-button (click)="editUserProfile()"
+          style="margin-right: 6px; font-weight: bold; background-color: #7e6494;" color="primary">
+          Edit
+        </button>
+        <button mat-raised-button (click)="deleteUserProfile()" style="font-weight: bold; background-color: #7e6494;"
+          color="primary">Delete
+          Profile</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="favorite-movies">
+    <h3>Favorite Movies:</h3>
+    <ul>
+      <li *ngFor="let movie of favoriteMovies">
+        {{ movie.Title }}
+      </li>
+    </ul>
+  </div>
+
+</div>

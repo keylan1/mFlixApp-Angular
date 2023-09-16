@@ -17,7 +17,8 @@ export class UserLoginFormComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    private router: Router) { }
   ngOnInit(): void {
   }
   // This is the function responsible for sending the form inputs to the backend
@@ -27,15 +28,15 @@ export class UserLoginFormComponent implements OnInit {
       localStorage.setItem('token', result.token);
       localStorage.setItem('Username', result.user.Username);
 
-      this.router.navigate(['movies']);
       this.dialogRef.close(); //Will close modal on success
       console.log(result);
       this.snackBar.open('Successfully logged in', 'OK', {
         duration: 2000
       });
+      this.router.navigate(['movies']);
     }, (result) => {
       console.log(result);
-      this.snackBar.open('Sorry, something went wrong', 'OK', {
+      this.snackBar.open(`Sorry, user doesn't exist or you made a mistake`, 'OK', {
         duration: 2000
       });
     });
