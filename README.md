@@ -10,7 +10,11 @@ This project is a single-page, responsive movie app built with Angular, featurin
 - **Where**: The app is hosted online, offering equal access on any device.
 - **Why**: The app provides movie enthusiasts with information about movies, directors, and genres. It also showcases Angular skills and documentation abilities.
 
-## Design Criteria
+## Screenshots
+
+![Welcome](src/assets/Welcome.png)
+![Movies](src/assets/Movies.png)
+![Profile](src/assets/Profile.png)
 
 ### User Stories
 
