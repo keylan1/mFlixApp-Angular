@@ -1,6 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+/**
+ * Component responsible for displaying genre information in a dialog.
+ */
 @Component({
   selector: 'app-genre-info',
   templateUrl: './genre-info.component.html',

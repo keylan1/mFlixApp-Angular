@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 
-
+/**
+ * Component for user profile.
+ */
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -20,16 +22,30 @@ export class UserProfileComponent {
 
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: ''/*, FavoriteMovies: [''] */ };
 
+
+  /**
+  * Constructor to inject dependencies.
+  * @param fetchApiData - The service for API calls.
+  * @param snackBar - The snackBar service for displaying notifications.
+  * @param dialog - The dialog service for displaying dialogs.
+  * @param router - The router for navigation.
+  */
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
     private router: Router) { }
 
+  /**
+ * Lifecycle hook called when the component is initialized.
+ */
   ngOnInit(): void {
     this.getUserProfile();
   }
-  // This is the function responsible for sending the form inputs to the backend
+
+  /**
+   * Retrieves user profile data from the backend.
+   */
   getUserProfile(): void {
     this.fetchApiData.getUser().subscribe((result: any) => {
       // Logic for a successful user registration goes here! (To be implemented)
@@ -42,6 +58,9 @@ export class UserProfileComponent {
     });
   }
 
+  /**
+   * Edits the user profile.
+   */
   editUserProfile(): void {
     console.log(this.userData);
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
@@ -59,6 +78,9 @@ export class UserProfileComponent {
     });
   }
 
+  /**
+  * Deletes the user profile.
+  */
   deleteUserProfile(): void {
     if (confirm('are you sure?')) {
       this.router.navigate(['welcome']).then(() => {

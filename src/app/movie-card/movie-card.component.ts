@@ -6,6 +6,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DirectorInfoComponent } from '../director-info/director-info.component';
 import { GenreInfoComponent } from '../genre-info/genre-info.component';
 
+/**
+ * Component responsible for displaying movie cards and managing user interactions with them.
+ */
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -27,6 +30,9 @@ export class MovieCardComponent {
     this.getFavorites();
   }
 
+  /**
+  * Retrieves a list of all movies and stores them in the 'movies' array.
+  */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
       this.movies = res;
@@ -34,7 +40,10 @@ export class MovieCardComponent {
       return this.movies;
     });
   }
-  // Fetch user info and set favorites
+
+  /**
+   * Fetches user information and sets the 'favorites' array.
+   */
   getFavorites(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
@@ -43,7 +52,11 @@ export class MovieCardComponent {
     });
   }
 
-
+  /**
+   * Opens a dialog displaying movie synopsis.
+   * @param title - The movie's title.
+   * @param description - The movie's description.
+   */
   openSynopsisDialog(title: string, description: string): void {
     this.dialog.open(MovieInfoComponent, {
       data: {
@@ -54,6 +67,10 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+ * Opens a dialog displaying director information.
+ * @param director - The director's data.
+ */
   openDirectorDialog(director: any): void {
     this.dialog.open(DirectorInfoComponent, {
       data: {
@@ -64,6 +81,10 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * Opens a dialog displaying genre information.
+   * @param genre - The genre's data.
+   */
   openGenreDialog(genre: any): void {
     this.dialog.open(GenreInfoComponent, {
       data: {
@@ -74,11 +95,19 @@ export class MovieCardComponent {
     });
   }
 
-  // check if a movie is a user's favorite
+  /**
+  * Checks if a movie is in the user's favorites.
+  * @param id - The ID of the movie to check.
+  * @returns True if the movie is a favorite, false otherwise.
+  */
   isFavorite(id: string): boolean {
     return !!(this.favorites.find(favMovie => favMovie._id === id));
   }
 
+  /**
+     * Toggles a movie's favorite status for the current user.
+     * @param id - The ID of the movie to toggle.
+     */
   toggleFavorite(id: string): void {
     if (this.isFavorite(id)) {
       // Remove the movie from favorites
