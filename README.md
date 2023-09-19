@@ -1,27 +1,31 @@
 # Angular mFlix App
 
-This project is a single-page, responsive movie app built with Angular, featuring routing and multiple interface views. It serves as the client-side component for the existing server-side from Achievement 2, facilitating user requests and rendering server responses through various interface views. The app includes documentation and handoff deliverables, such as a kanban board with user stories and story points.
+## Project Description
 
-## 5 W’s
+This project is a single-page, responsive movie app built with Angular, featuring routing and multiple interface views. It serves as the client-side component for an existing server-side flixApp API, facilitating user requests and rendering server responses through various interface views, and includes documentation and handoff deliverables.
 
-- **Who**: The users of the MyFlix movie app and codebase, including developers and designers.
-- **What**: A single-page, responsive movie app built with Angular that supports user authentication, displays movie information, and allows users to manage their favorite movies.
-- **When**: Users can access the app at any time to learn more about movies or update their user information.
-- **Where**: The app is hosted online, offering equal access on any device.
-- **Why**: The app provides movie enthusiasts with information about movies, directors, and genres. It also showcases Angular skills and documentation abilities.
+## Table of Contents
+
+- [Screenshots](#screenshots)
+- [Key Features](#key-features)
+- [Link](#link)
+- [Technical Requirements](#technical-requirements)
+- [Development](#development)
+- [Further Help](#further-help)
 
 ## Screenshots
 
-![Welcome](src/assets/Welcome.png)
-![Movies](src/assets/Movies.png)
-![Profile](src/assets/Profile.png)
+<p align="center">
+  <img src="src/assets/Welcome.png" alt="Welcome" width="400">
+  <img src="src/assets/Movies.png" alt="Movies" width="400">
+  <img src="src/assets/Profile.png" alt="Profile" width="400">
+</p>
 
-### User Stories
-
-- As a user, I want to access information on movies, directors, and genres.
-- As a user, I want to create a profile to save my favorite movies.
-
-### Key Features
+<p align="center">
+  <img src="src/assets/angular-welcome.png" alt="Welcome" width="400">
+  <img src="src/assets/angular-profile.png" alt="Profile" width="400">
+</p>
+## Key Features
 
 - Welcome View: Allows users to log in or register an account.
 - All Movies View: Displays a list of all movies.
@@ -29,6 +33,10 @@ This project is a single-page, responsive movie app built with Angular, featurin
 - Director View: Displays information about the director of a selected movie.
 - Genre View: Presents information about a selected movie genre.
 - Synopsis View: Presents a brief description of the movie.
+
+## Link
+
+https://keylan1.github.io/mFlixApp-Angular
 
 ## Technical Requirements
 
@@ -53,22 +61,21 @@ git clone <repository-url>
 cd MyFlixAngularClient
 npm install
 ng serve
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to http://localhost:4200/. The application will automatically reload if you change any of the source files.
+Code scaffolding
 
-## Code scaffolding
+Run `ng generate component component-name` to generate a new component.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Build
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng build` to build the project. The build artifacts will be stored in the dist/ directory.
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get more help on the Angular CLI use ng help or go check out the Angular CLI Overview and Command Reference page.
+
+```
+
 ```
