@@ -34,13 +34,13 @@ This project is a single-page, responsive movie app built with Angular, featurin
 </p>
 
 <p align="center">
-  <img src="src/assets/angular-welcome.png" alt="Welcome">
+  <img src="src/assets/angular-welcome.PNG" alt="Welcome">
   <br>
   <em>Mobile View</em>
 </p>
 
 <p align="center">
-  <img src="src/assets/angular-profile.png" alt="Profile">
+  <img src="src/assets/angular-profile.PNG" alt="Profile">
   <br>
   <em>Mobile View</em>
 </p>
