@@ -25,6 +25,7 @@ This project is a single-page, responsive movie app built with Angular, featurin
   <img src="src/assets/angular-welcome.png" alt="Welcome" width="400">
   <img src="src/assets/angular-profile.png" alt="Profile" width="400">
 </p>
+
 ## Key Features
 
 - Welcome View: Allows users to log in or register an account.
