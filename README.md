@@ -16,14 +16,33 @@ This project is a single-page, responsive movie app built with Angular, featurin
 ## Screenshots
 
 <p align="center">
-  <img src="src/assets/Welcome.png" alt="Welcome" width="400">
-  <img src="src/assets/Movies.png" alt="Movies" width="400">
-  <img src="src/assets/Profile.png" alt="Profile" width="400">
+  <img src="src/assets/Welcome.png" alt="Welcome">
+  <br>
+  <em>Web View</em>
 </p>
 
 <p align="center">
-  <img src="src/assets/angular-welcome.PNG" alt="Welcome" width="400">
-  <img src="src/assets/angular-profile.PNG" alt="Profile" width="400">
+  <img src="src/assets/Movies.png" alt="Movies">
+  <br>
+  <em>Web View</em>
+</p>
+
+<p align="center">
+  <img src="src/assets/Profile.png" alt="Profile">
+  <br>
+  <em>Web View</em>
+</p>
+
+<p align="center">
+  <img src="src/assets/angular-welcome.png" alt="Welcome">
+  <br>
+  <em>Mobile View</em>
+</p>
+
+<p align="center">
+  <img src="src/assets/angular-profile.png" alt="Profile">
+  <br>
+  <em>Mobile View</em>
 </p>
 
 ## Key Features
